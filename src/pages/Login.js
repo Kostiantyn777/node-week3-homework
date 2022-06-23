@@ -1,18 +1,47 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 const Login = () => {
   return (
     <>
-      <h1>Login Page</h1>
-      <span>
-        If you do not have an account
-        <Link to="/signup">Sign up</Link>
-      </span>
-      <br />
-      <span>
-        Go Back
-        <Link to="/">Home</Link>
-      </span>
+      <form>
+        <h3>Sign In</h3>
+        <div className="mb-3">
+          <label>Email address</label>
+          <input
+            type="email"
+            className="form-control"
+            placeholder="Enter email"
+          />
+        </div>
+        <div className="mb-3">
+          <label>Password</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Enter password"
+          />
+        </div>
+        <div className="mb-3">
+          <div className="custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              className="custom-control-input"
+              id="customCheck1"
+            />
+            <label className="custom-control-label" htmlFor="customCheck1">
+              Remember me
+            </label>
+          </div>
+        </div>
+        <div className="d-grid">
+          <button type="submit" className="btn btn-info">
+            Submit
+          </button>
+        </div>
+        <p className="forgot-password text-right">
+          Forgot <a href="/">Password?</a>
+        </p>
+      </form>
     </>
   );
 };
