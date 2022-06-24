@@ -4,6 +4,8 @@ import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import Preferences from "./pages/Preferences";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route path="/sign-in" element={<Login />} />
             <Route path="/sign-up" element={<Signup />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/preferences" element={<Preferences />} />
           </Routes>
         </div>
       </div>
