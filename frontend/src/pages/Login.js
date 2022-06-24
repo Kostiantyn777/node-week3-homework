@@ -1,12 +1,32 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+async function loginUser(credentials) {
+  return fetch("http://localhost:8080/sign-in", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+}
+
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = await loginUser({
+      email,
+      password,
+    });
+    setToken(token);
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h3>Please Sign In</h3>
         <div className="mb-3">
           <label>Email address</label>
@@ -14,7 +34,7 @@ const Login = ({ setToken }) => {
             type="email"
             className="form-control"
             placeholder="Enter email"
-            onChange={(e) => console.log(setEmail(e.target.value))}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-3">
@@ -23,7 +43,7 @@ const Login = ({ setToken }) => {
             type="password"
             className="form-control"
             placeholder="Enter password"
-            onChange={(e) => console.log(setPassword(e.target.value))}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="mb-3">
