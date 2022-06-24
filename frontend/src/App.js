@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import Preferences from "./pages/Preferences";
 
 function App() {
+  const [token, setToken] = useState('');
+
   return (
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light">
@@ -34,10 +36,14 @@ function App() {
       <div className="auth-wrapper">
         <div className="auth-inner">
           <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/sign-in" element={<Login />} />
+            <Route exact path="/" element={<Home token={token} />} />
+
             <Route path="/sign-up" element={<Signup />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            {token ? (
+              <Route path="/sign-in" element={<Dashboard />} />
+            ) : (
+              <Route path="/sign-in" element={<Login setToken={setToken} />} />
+            )}
             <Route path="/preferences" element={<Preferences />} />
           </Routes>
         </div>

@@ -1,10 +1,10 @@
 import React from "react";
 
-const Login = () => {
+const Login = ({setToken}) => {
   return (
     <>
       <form>
-        <h3>Sign In</h3>
+        <h3>Please Sign In</h3>
         <div className="mb-3">
           <label>Email address</label>
           <input
