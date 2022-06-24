@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-const Login = ({setToken}) => {
+const Login = ({ setToken }) => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   return (
     <>
       <form>
@@ -11,6 +14,7 @@ const Login = ({setToken}) => {
             type="email"
             className="form-control"
             placeholder="Enter email"
+            onChange={(e) => console.log(setEmail(e.target.value))}
           />
         </div>
         <div className="mb-3">
@@ -19,6 +23,7 @@ const Login = ({setToken}) => {
             type="password"
             className="form-control"
             placeholder="Enter password"
+            onChange={(e) => console.log(setPassword(e.target.value))}
           />
         </div>
         <div className="mb-3">
@@ -45,5 +50,7 @@ const Login = ({setToken}) => {
     </>
   );
 };
-
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
+};
 export default Login;
